@@ -2,10 +2,12 @@
 Dog's breed Classifier and Similar Dogs search engine. An Flask app to classify Dog's type and Find similar dogs.
 Instructions
 Run Classification:
-## Train Model - Classification/Dogs.ipynb 
-Then save the model- Dogs.h5
-
-Run Server:
+## Train Model - 
+1. Classification/Dogs.ipynb 
+2. Then save the model- Dogs.h5
+## To extract features
+run feature_extractor.py
+## Run Server:
 python3 server.py
 
 ## Abstract
