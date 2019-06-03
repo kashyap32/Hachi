@@ -1,0 +1,1 @@
+{'bed': 0, 'chair': 1, 'clock': 2, 'couch': 3, 'dining table': 4}
