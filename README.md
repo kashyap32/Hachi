@@ -11,7 +11,7 @@ run feature_extractor.py
 python3 server.py
 
 ## Abstract
-This codebase tries to present in the simplest and most compact way a few of the major Transfer Learning techniques, which have emerged over the past years. This code contains two main things :- Classification with the help of Transfer Learning and Features extraction for Image similarity. Flask is used for serving these models/ Features.
+This codebase tries to present in the simplest and most compact way a one of the major Transfer Learning techniques, which have emerged over the past years. This project contains two main things :- Classification with the help of Transfer Learning and Features extraction for Image similarity. Flask is used for serving these models/ Features.
 
 ![](Result.gif)
 
