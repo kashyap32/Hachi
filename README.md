@@ -29,5 +29,6 @@ This codebase tries to present in the simplest and most compact way a few of the
 
 # Weights
 For Yolo you can download from  - https://pjreddie.com/darknet/yolo/
+
 To get weights of Dogs breed classifier mail me at kashyap32raval@gmail.com (Or just train it Colab will be very useful for this task :) )
 ![](SS.png)
