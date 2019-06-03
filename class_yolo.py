@@ -1,5 +1,4 @@
-# USAGE
-# python yolo.py --image images/baggage_claim.jpg --yolo yolo-coco
+
 
 # import the necessary packages
 import numpy as np
@@ -7,18 +6,7 @@ import argparse
 import time
 import cv2
 import os
-# fro PIL import Image
 from feature_extractor import FeatureExtractor
-# from class_predictor import ClassPrediction
-
-# construct the argument parse and parse the arguments
-# pred=ClassPrediction()
-# ap = argparse.ArgumentParser()
-# ap.add_argument("-i", "--image", required=True,help="path to input image")
-# ap.add_argument("-y", "--yolo", required=True,help="base path to YOLO directory")
-# ap.add_argument("-c", "--confidence", type=float, default=0.5,help="minimum probability to filter weak detections")
-# ap.add_argument("-t", "--threshold", type=float, default=0.3,help="threshold when applyong non-maxima suppression")
-# args = vars(ap.parse_args())
 
 class YOLO_MODEL:
 	def __init__(self):
@@ -38,9 +26,7 @@ class YOLO_MODEL:
 		COLORS = np.random.randint(0, 255, size=(len(LABELS), 3),
 			dtype="uint8")
 
-		# derive the paths to the YOLO weights and model configuration
-		# weightsPath = os.path.sep.join([args["yolo"], "yolov3.weights"])
-		# configPath = os.path.sep.join([args["yolo"], "yolov3.cfg"])
+		
 
 		weightsPath="yolo-coco/yolov3.weights"
 		configPath ="yolo-coco/yolov3.cfg"
@@ -120,13 +106,7 @@ class YOLO_MODEL:
 		#print("This is count of boxes",len(boxes))
 
 		#print(boxes)
-		#print("This is count of IDs",len(classIDs))
-		#print(classIDs)
-		#print("This is the boxes selected",len(idxs))
-		#print(idxs)
-		# ensure at least one detection exists
-		# print(boxes)
-		# print(idxs)
+		
 		part_count=0
 		if len(idxs) > 0:
 			# loop over the indexes we are keeping
@@ -139,9 +119,7 @@ class YOLO_MODEL:
 				box_frame=image[y:y+h,x:x+w]
 				# cv2.imshow('olay',box_frame)
 				# cv2.waitKey(0)
-				# pred_class=pred.img_process(box_frame)
-				# print(pred_class)
-				# draw a bounding box rectangle and label on the image
+				
 				color = [int(c) for c in COLORS[classIDs[i]]]
 
 				# print(x,y)
@@ -170,10 +148,5 @@ class YOLO_MODEL:
 		# cv2.imshow("Image", image)
 		detected_img_path="static/detected/"+file_name
 		cv2.imwrite(detected_img_path,image)
-		#os.system('mosquitto_pub -h 192.168.43.220 -t "ready" -m "imageready"')
-		#time.sleep(5)
-		#os.system('rm image_akul.jpeg')
-		# print("done")
-		#print(type(image))
-		# cv2.waitKey(0)
+	
 		return return_class,maps,image_paths,unique_class
