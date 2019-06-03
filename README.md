@@ -9,7 +9,9 @@ Dog's breed Classifier and Similar Dogs search engine. An Flask app to classify 
 ![](Result.gif)
 
 # Classification
+![](model.png)
 
 ## 
 
 # Image-similarity
+![](extract.jpg)
