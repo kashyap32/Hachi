@@ -3,7 +3,7 @@ Dog's breed Classifier and Similar Dogs search engine. An Flask app to classify 
 Instructions
 Run Classification:
 ## Train Model - Classification/Dogs.ipynb 
-Then save the model- Gogs.h5
+Then save the model- Dogs.h5
 
 Run Server:
 python3 server.py
