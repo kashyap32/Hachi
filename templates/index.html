@@ -1,0 +1,163 @@
+<!DOCTYPE html>
+<html>
+  <head>
+      <script src='https://code.jquery.com/jquery-1.12.4.min.js'></script>
+      <script src='https://cdnjs.cloudflare.com/ajax/libs/owl-carousel/1.3.3/owl.carousel.min.js'></script>
+      
+        
+      
+      <link href="//maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" rel="stylesheet" id="bootstrap-css">
+      <script src="//maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js"></script>
+      <script src="//cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+      <!------ Include the above in your HEAD tag ---------->
+      
+        <link rel='stylesheet prefetch' href='https://cdnjs.cloudflare.com/ajax/libs/owl-carousel/1.3.3/owl.carousel.min.css'>
+      <link rel='stylesheet prefetch' href='https://cdnjs.cloudflare.com/ajax/libs/owl-carousel/1.3.3/owl.theme.min.css'>
+      <link rel='stylesheet prefetch' href='https://maxcdn.bootstrapcdn.com/font-awesome/4.6.1/css/font-awesome.min.css'>
+      
+          
+    <link rel="stylesheet" href="static/css/bootstrap.min.css" />
+    <title>Image Search</title>
+    <style>
+      .img_fig {
+        display: inline;
+      }
+     
+ </style> 
+  </head>
+  <body>
+    <div class="container">
+      <center>
+        <img src="static/pic/logo.jpg" width="200px" />
+        <h1 style="margin-bottom: 0.5em;">Simple Image Search Engine</h1>
+        <form
+          method="POST"
+          enctype="multipart/form-data"
+          style="margin-bottom: 2em;"
+        >
+          <div
+            class="custom-file"
+            style="display: block; margin-bottom: 1em;"
+          >
+            <label class="custom-file-label" for="query_img"
+              >Upload an image</label
+            >
+            <input
+              type="file"
+              accept="image/*"
+              class="custom-file-input"
+              name="query_img"
+              required
+            />
+          </div>
+          <button id="btn-submit" type="submit" class="btn btn-primary">
+            Submit
+          </button>
+        </form>
+        <div
+          id="search-loader"
+          style="display: none; flex-direction: row; justify-content: center;"
+        >
+          <div class="spinner-border"></div>
+          <h4 style="margin-left: 1em;">Searching...</h4>
+        </div>
+        {% if file_error %}
+        <div
+          id="alert"
+          class="alert alert-danger alert-dismissible fade show"
+          role="alert"
+        >
+          <strong>Error!</strong> You should upload a valid image file.
+        </div>
+        {% endif %}
+      </center>
+      <div class="container">
+      {% if searched %}
+        <div id="div_res">
+          <h2>Query Image:</h2>
+          <br>
+          {% if query_path %}
+          <img src="{{ query_path }}" width=300px>
+            <!-- <map name="furniture">
+            {% for i in coords_dict %}
+            <area shape="rect" coords="{{ i[0] }},{{i[1]}},{{i[2]}},{{i[3]}}" href="facebook.com">
+            {% endfor %}
+            </map> -->
+      {% endif %}
+            <span class="badge" style="background-color:green;color:white;font-size: 25px;cursor: pointer;" >{{breed}}</span>
+
+          <br><br>
+          {% if predicted_class|length==0 %}
+          <h1> There are no relevant Object in the Image!! </h1>
+          {% endif %}
+          {% for i in unique_class %}
+
+            <!-- <span class="badge" style="background-color:red;color:white;font-size: 25px;cursor: pointer;" onclick= "func_fetch({{tag_dictionary[predicted_class[i]]}})">{{predicted_class[i]}}</span> -->
+            <span class="badge" style="background-color:red;color:white;font-size: 25px;cursor: pointer;" onclick= "func_fetch('{{json_form}}','{{i}}')">{{i}} Click Me to get similar images</span>
+          {% endfor %}
+
+          <br><br>
+          <div id="disp_images">
+                  <div > {{for }} </div>
+            </div>
+          </div>
+         
+            
+            
+          
+        
+      {% endif %}
+      </div>
+    <script src="static/js/bootstrap.min.js"></script>
+    <script src="static/js/jquery.slim.min.js"></script>
+    <script src="static/js/popper.js"></script>
+    <script>
+      $(".custom-file-input").on("change", () => {
+        var fileName = jQuery(".custom-file-input")
+          .val()
+          .split("\\")
+          .pop();
+        jQuery(".custom-file-input")
+          .siblings(".custom-file-label")
+          .addClass("selected")
+          .html(fileName);
+      });
+      $(form).on("submit", () => {
+        $("#search-loader").css("display", "flex");
+        $("#query_img").prop("disabled", true);
+        $("#btn-submit").prop("disabled", true);
+      });
+
+      function func_fetch(tag_dict,tag_dictionary_key)
+      {
+        var json_obj=JSON.parse(tag_dict)
+        if(json_obj!=null)
+        {
+          var list = json_obj[tag_dictionary_key];
+          d= document.getElementById("disp_images");
+          d.innerHTML = '';
+          for(i=0;i<list.length;i++)
+          {
+            var grid = document.createElement("div");
+            grid.style.class="card";
+            grid.style.margin="5px";
+            var elem = document.createElement("img");
+            elem.style.height="220px";
+            elem.style.width="220px";
+            elem.style.objectFit="contain";
+            elem.style.float="left";
+            elem.style.margin="10px";
+            elem.src = list[i];
+            grid.appendChild(elem);
+            d.appendChild(grid);
+          }
+        }
+      }
+     
+
+
+      
+    </script>
+    
+  </body>
+</html>
