@@ -36,27 +36,5 @@ class FeatureExtractor:
             feature = self.model1.predict(x)[0][0][0]  # (1, 4096) -> (4096, )
             return feature / np.linalg.norm(feature)  # Normalize
 
-    # def img_process(self,uploaded_img_path):
-    #     img1=load_img(uploaded_img_path)
-    #     img1=img_to_array(img1)
-    #     img1=np.expand_dims(img1,axis=0)
-    #     img1=preprocess_input(img1)
-    #     with self.graph2.as_default():
-    #         session1=tf.Session()
-    #         with session1.as_default():
-    #             base_model_class = load_model('class_model.h5')
-    #             yhat=base_model_class.predict(img1)
-    #             test_list=np.array(yhat).tolist()
-    #             max_prob=np.amax(yhat)
-    #             class_name=test_list[0].index(max_prob)
-    #             if (class_name==0):
-    #                 return "Have you searched a Bed?"
-    #             elif (class_name==1):
-    #                 return "Have you searched a Chair?"
-    #             elif (class_name==2):
-    #                 return "Have you searched a Clock?"
-    #             elif (class_name==3):
-    #                 return "Have you searched a Couch?"
-    #             else:
-    #                 return "Have you searched a Dinning Table?"
+
 
